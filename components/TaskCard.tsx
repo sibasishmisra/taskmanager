@@ -32,7 +32,7 @@ export default function TaskCard({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const StatusIcon = statusIcons[task.status];
+  const StatusIcon = statusIcons[task.status as keyof typeof statusIcons];
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && task.status !== "DONE";
 
   async function cycleStatus() {
@@ -108,10 +108,10 @@ export default function TaskCard({
 
         {/* Badges */}
         <div className="flex flex-wrap items-center gap-1.5 mt-3">
-          <span className={cn("text-xs px-2 py-0.5 rounded-full font-medium", priorityColors[task.priority])}>
+          <span className={cn("text-xs px-2 py-0.5 rounded-full font-medium", priorityColors[task.priority as keyof typeof priorityColors])}>
             {task.priority}
           </span>
-          <span className={cn("text-xs px-2 py-0.5 rounded-full font-medium", statusColors[task.status])}>
+          <span className={cn("text-xs px-2 py-0.5 rounded-full font-medium", statusColors[task.status as keyof typeof statusColors])}>
             {task.status.replace("_", " ")}
           </span>
           {task.category && (

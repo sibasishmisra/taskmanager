@@ -41,7 +41,7 @@ export default function TaskModal({
         priority: task.priority,
         dueDate: task.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : "",
         categoryId: task.categoryId || "",
-        tags: task.tags.join(", "),
+        tags: task.tags || "",
         isRecurring: task.isRecurring,
         recurringInterval: task.recurringInterval || "weekly",
       });
